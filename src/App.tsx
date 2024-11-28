@@ -24,32 +24,30 @@ function App() {
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
-    const filterUsers = () => {
-      if (searchTerm.trim() === "") {
-        setSuggestions([]);
-        return;
-      }
-      fetch(`https://dummyjson.com/users/search?q= ${searchTerm}`)
-        .then((res) => res.json())
-        .then((data: SuggestionsResponse) => setSuggestions(data.users))
-        .catch((err) => console.error(err));
-    };
-    filterUsers();
+    if (searchTerm.trim() === "") {
+      setSuggestions([]);
+      return;
+    }
+    fetch(`https://dummyjson.com/users/search?q= ${searchTerm}`)
+      .then((res) => res.json())
+      .then((data: SuggestionsResponse) => setSuggestions(data.users))
+      .catch((err) => console.error(err));
   }, [searchTerm]);
 
   const handleUserSelection = (user: User) => {
-    setSelectedUsers([...selectedUsers, user]);
-    setCheckSelectedUsers(new Set([...checkSelectedUsers, user.email]));
+    setSelectedUsers((prev) => [...prev, user]);
+    setCheckSelectedUsers((prev) => new Set([...prev, user.email]));
     setSearchTerm("");
     setSuggestions([]);
     inputRef.current?.focus();
   };
   const handleUserDeletion = (user: User) => {
-    const updatedUsers = selectedUsers.filter((suser) => suser.id !== user.id);
-    setSelectedUsers(updatedUsers);
-    const updates = new Set(checkSelectedUsers);
-    updates.delete(user.email);
-    setCheckSelectedUsers(updates);
+    setSelectedUsers((prev) => prev.filter((suser) => suser.id !== user.id));
+    setCheckSelectedUsers((prev) => {
+      const newSet = new Set(prev);
+      newSet.delete(user.email);
+      return newSet;
+    });
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -67,7 +65,7 @@ function App() {
       <div className="user-search-input">
         <SelectedUsers selectedUsers={selectedUsers} handleUserDeletion={handleUserDeletion} />
         <div className="suggestions-cotnainer">
-          <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} handleKeyDown={handleKeyDown} />
+          <SearchBar ref={inputRef} searchTerm={searchTerm} setSearchTerm={setSearchTerm} handleKeyDown={handleKeyDown} />
           <SuggestionsList suggestions={suggestions} checkSelectedUsers={checkSelectedUsers} handleUserSelection={handleUserSelection} />
         </div>
       </div>

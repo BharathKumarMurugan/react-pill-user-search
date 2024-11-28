@@ -1,16 +1,17 @@
-import { useRef } from "react";
+import { forwardRef } from "react";
 interface SearchBarProps {
   searchTerm: string;
   setSearchTerm: (value: string) => void;
   handleKeyDown: (event: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ searchTerm, setSearchTerm, handleKeyDown }) => {
-  const inputRef = useRef<HTMLInputElement | null>(null);
+const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>((props, ref) => {
+  const { searchTerm, setSearchTerm, handleKeyDown } = props;
+  //   const inputRef = useRef<HTMLInputElement | null>(null);
   return (
     <>
       <input
-        ref={inputRef}
+        ref={ref}
         type="text"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
@@ -19,6 +20,6 @@ const SearchBar: React.FC<SearchBarProps> = ({ searchTerm, setSearchTerm, handle
       />
     </>
   );
-};
+});
 
 export default SearchBar;
