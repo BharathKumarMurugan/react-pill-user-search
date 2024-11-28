@@ -1,6 +1,4 @@
 body {
-  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
-  /* new */
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
@@ -8,9 +6,6 @@ body {
 }
 
 .container {
-  /* display: flex;
-  position: relative; */
-  /* new */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,15 +16,6 @@ body {
 }
 
 .user-search-input {
-  /* width: 100%;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
-  padding: 5px 10px;
-  border: 1px solid #ccc;
-  border-radius: 20px; */
-  /* new */
   width: 100%;
   max-width: 600px;
   display: flex;
@@ -43,8 +29,6 @@ body {
 }
 
 .user-search-input input {
-  /* border: none; */
-  /* new */
   flex: 1;
   border: none;
   font-size: 16px;
@@ -60,16 +44,6 @@ body {
   position: relative;
 }
 .suggestions-list {
-  /* max-height: 300px;
-  overflow-y: scroll;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  position: absolute;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  margin-top: 9px; */
-  /* new */
   max-height: 300px;
   overflow-y: auto;
   list-style: none;
@@ -86,13 +60,6 @@ body {
 }
 
 .suggestions-list li {
-  /* display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 10px;
-  cursor: pointer;
-  border-bottom: 1px solid #eee; */
-  /* new */
   display: flex;
   align-items: center;
   gap: 10px;
@@ -111,8 +78,6 @@ body {
 }
 
 .suggestions-list li img {
-  /* height: 20px; */
-  /* new */
   height: 30px;
   width: 30px;
   border-radius: 50%;
@@ -120,16 +85,6 @@ body {
 }
 
 .user-pill {
-  /* height: 20px;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  background-color: #000;
-  color: #fff;
-  padding: 5px 10px;
-  border-radius: 16px;
-  cursor: pointer; */
-  /* new */
   display: flex;
   align-items: center;
   gap: 8px;
@@ -143,17 +98,13 @@ body {
 }
 
 .user-pill img {
-  /* height: 100%; */
-  /* new */
   height: 24px;
   width: 24px;
   border-radius: 50%;
   object-fit: cover;
 }
+
 .user-pill button {
-  /* background: none;
-  border: none;
-  color: #ccc; */
   background: none;
   border: none;
   color: #fff;

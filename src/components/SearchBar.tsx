@@ -7,7 +7,6 @@ interface SearchBarProps {
 
 const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>((props, ref) => {
   const { searchTerm, setSearchTerm, handleKeyDown } = props;
-  //   const inputRef = useRef<HTMLInputElement | null>(null);
   return (
     <>
       <input
